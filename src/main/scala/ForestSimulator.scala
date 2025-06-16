@@ -73,39 +73,8 @@ class ForestSimulator(initialForest: Array[Array[ForestCell]], treeProb: Double,
     val height = prev.length
     val width = prev(0).length
 
-//    for (y <- 0 until height; x <- 0 until width if prev(y)(x).isInstanceOf[Lightning]) {
-//      for (dir <- Directions.all) {
-//        val nx = x + dir.dx; val ny = y + dir.dy
-//        if (nx >= 0 && nx < width && ny >= 0 && ny < height) prev(ny)(nx) match {
-//          case _: Tree  => prev(ny)(nx) = Fire(0, fromGrass = false)
-//          case _: Grass => prev(ny)(nx) = Fire(0, fromGrass = true)
-//          case _        =>
-//        }
-//      }
-//    }
-//
-//    if (forestHistory.length % regrowSteps == 0) {
-//      val trees = for { y <- 0 until height; x <- 0 until width if prev(y)(x).isInstanceOf[Tree] } yield (x,y)
-//      if (trees.nonEmpty) {
-//        val (lx, ly) = trees(Random.nextInt(trees.length))
-//        prev(ly)(lx) = Lightning()
-//        for (dir <- Directions.all) {
-//          val nx = lx + dir.dx; val ny = ly + dir.dy
-//          if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-//            prev(ny)(nx) match {
-//              case _: Tree  => prev(ny)(nx) = Fire(0, fromGrass = false)
-//              case _: Grass => prev(ny)(nx) = Fire(0, fromGrass = true)
-//              case _        =>
-//            }
-//          }
-//        }
-//      }
-//    }
-
     val newForest = Array.tabulate(height, width) { (y, x) =>
       prev(y)(x) match {
-
-//        case _: Lightning => Fire(0, fromGrass = false)
 
         case Fire(age, fromGrass) =>
           if (age + 1 >= burnSteps) Soil(0, fromGrass)
