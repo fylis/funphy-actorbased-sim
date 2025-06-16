@@ -22,7 +22,7 @@ object Main extends App {
     treeBurnSteps, treeRegrowSteps
   )
 
-//  Simulation.consoleAnimation(simulatedForestConsole, 100)
+  Simulation.consoleAnimation(simulatedForestConsole, 100)
 
   // Pour les graphes
   val windSpeeds = List(0.0, 2.0, 4.0, 6.0, 8.0, 10.0)
