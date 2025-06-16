@@ -1,20 +1,20 @@
 import scala.util.Random
 
 object ForestGenerator {
-  def randomNonFireCell(): Cell = {
-    Random.nextInt(4) match {
-      case 0 => Tree()
-      case 1 => Grass()
-      case 2 => Water()
-      case 3 => Soil()
+  private def randomNonFireForestCell(): ForestCell = {
+    Random.nextInt(7) match {
+      case 0 | 1 | 2 => Tree()
+      case 3 | 4 => Grass()
+      case 5 => Water()
+      case 6 => Soil()
     }
   }
 
-  def generate(width: Int, height: Int): Array[Array[Cell]] = {
-    val totalCells = width * height
-    val maxFires = (totalCells * 0.08).toInt
+  def generate(width: Int, height: Int, fireProb: Double): Array[Array[ForestCell]] = {
+    val totalForestCells = width * height
+    val maxFires = (totalForestCells * fireProb).toInt
 
-    val forest = Array.fill(height, width)(randomNonFireCell())
+    val forest = Array.fill(height, width)(randomNonFireForestCell())
 
     val allPositions = for {
       y <- 0 until height
