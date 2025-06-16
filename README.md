@@ -50,8 +50,12 @@ pip install -r requirements.txt
 ```bash
 python .\graph.py`
 ```
+
+# GIF Animation
+![GIF](forest.gif)
+
 # Graph
 ![image](graph1.png)
 
 # Video
-To watch the simulation in action, open the `res.mp4` file.   
+To watch the simulation in action, open the `res.mp4` file.  
